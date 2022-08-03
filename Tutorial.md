@@ -160,7 +160,7 @@ Limit 10;
 Write a query which returns the  **first 5**  rows from the employees table with only the columns  **first_name**,  **last_name**, and  **gender**.
 
 <details>
-<summary>**Solution Exercise 1** </summary>
+<summary>Solution Exercise 1 </summary>
 <br>
 
 ```
@@ -230,7 +230,7 @@ Where first_name LIKE 'F%';
 Write a query which returns the  **emp_no**,  **first_name**, and  **last_name**  from the employees table table. The gender should all be Male and the emp_id should be between 10050 and 10060.
 
 <details>
-<summary>**Solution Exercise 2** </summary>
+<summary>Solution Exercise 2</summary>
 <br>
 
 ```
