@@ -162,6 +162,7 @@ Write a query which returns the  **first 5**  rows from the employees table with
 <details>
 <summary>Solution Exercise 1 </summary>
 <br>
+
 ```
 Select first_name, last_name, gender
 From employees
