@@ -1,9 +1,13 @@
 # Intro To Databases with SQLite
 
-This repository host the material connected to a training developed by David Elsmore(Edina) for CDCS. 
+This repository host the material connected to a training developed by ** David Elsmore** ([Edina](https://edina.ac.uk/)) for CDCS. 
 Managing data has become increasingly important in the Humanities and Social Sciences. 
 Databases provide a powerful tool to allow for the storage, structuring and analysis of large amounts of data. In this workshop we will use SQLite, a flexible open-source database, to learn some of the basic concepts of database design and usage. 
 In this In this tutorial you can learn: Basic database design, Importing and exporting data, Querying datasets, Analysing your data.
+
+## Copyright
+
+This repository has a [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-nc/4.0/80x15.png)](https://creativecommons.org/licenses/by-nc/4.0/) license
 
 ## How to use this repository
 
