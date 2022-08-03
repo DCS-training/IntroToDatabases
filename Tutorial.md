@@ -160,7 +160,7 @@ Limit 10;
 Write a query which returns the  **first 5**  rows from the employees table with only the columns  **first_name**,  **last_name**, and  **gender**.
 
 <details>
-<summary>Solution Exercise 1 </summary>
+<summary>**Solution Exercise 1** </summary>
 <br>
 
 ```
@@ -169,3 +169,358 @@ From employees
 Limit 5;
 ```
 </details>
+
+## The Where Clause
+
+Usually you will want to restrict the rows returned based on some criteria. i.e. certain values or ranges within one or more columns.
+
+In this example we are only interested in rows where the value in the gender column column is F.
+
+```
+Select first_name, last_name, gender
+from employees
+Where gender = 'F';
+```
+
+In addition to using the '=' we can use many other operators such as <, <=, >, >=, <>
+
+```
+Select first_name, last_name, hire_date
+from employees
+Where hire_date < 1990;
+```
+
+### Using more complex logical expressions in the  `Where`  clause
+
+We can also use the AND and OR keywords to build more complex selection criteria.
+
+```
+Select first_name, last_name, hire_date
+from employees
+Where hire_date < 1990 and gender = 'M';
+```
+
+The following query returns the rows where the employee number is greater than 10001 and less than 10010
+
+```
+Select emp_no, first_name, last_name
+from employees Where emp_no > 10001 and emp_no < 10010;
+```
+
+The  **BETWEEN**  operator sounds as if it should return the same results but note it will return the lowest and highest values as well.
+
+```
+Select emp_no, first_name, last_name
+from employees
+Where emp_no between 10001 and 10010;
+```
+
+#### Using the  `LIKE`  operator
+
+The LIKE operator is used in a  `WHERE`  clause to search for a specified pattern in a column. It uses the Percent sign (%) to represent any value
+
+```
+Select first_name, last_name
+from employees
+Where first_name LIKE 'F%';
+```
+
+### Exercise 2
+
+Write a query which returns the  **emp_no**,  **first_name**, and  **last_name**  from the employees table table. The gender should all be Male and the emp_id should be between 10050 and 10060.
+
+<details>
+<summary>**Solution Exercise 2** </summary>
+<br>
+
+```
+
+Select emp_no, first_name, last_name
+from employees
+Where emp_no between 10050 and 10060
+And gender = 'M';
+
+                              
+```
+
+Note: This query returns results including the lowest and highest emp_no where intuitively you may have expected these to be excluded and only numbers in between the highest and lowest to be returned.
+</details>
+
+## Sorting Results
+
+If you want the results of your query to appear in a specific order, you can use the  **ORDER BY**  clause
+
+```
+Select first_name, last_name
+from employees
+Order by last_name;
+```
+
+By default the SQL assumes Ascending order. You can make this more explicit by using the ASC or DESC keywords.
+
+```
+Select first_name, last_name
+from employees
+Order  by last_name Desc;
+```
+
+You can also order by multiple columns
+
+```
+Select first_name, last_name, gender
+from employees
+Order by gender Desc, last_name Asc;
+```
+## Aggregation
+
+### Using built-in statistical functions
+
+Aggregate functions are used to perform some kind of mathematical or statistical calculation across a group of rows. The rows in each group are determined by the different values in a specified column or columns. Alternatively you can aggregate across the entire table.
+
+If we wanted to know the minimum, average and maximum dates of birth (birth_date) across the whole employees table we could write a query such as this;
+
+```
+SELECT
+    min(birth_date),
+    avg(birth_date),
+    max(birth_date)
+FROM employees;
+
+```
+
+This sort of query provides us with a general view of the values for a particular column or field across the whole table.
+
+Another useful function is  `count`. This can be used to return a total of records corresponding to a particular condition. e.g How many employees are female.
+
+```
+select count(*) from employees  where gender = 'F';
+```
+
+`count`,  `min`  ,  `max`  and  `avg`  are built in aggregate functions in SQLite (and any other SQL database system). There are other such functions avaialable. A complete list can be found in the SQLite documentation  [here](https://sqlite.org/lang_aggfunc.html)
+
+## Joins
+
+### keypoints:
+
+-   Joins are used to combine data from two or more tables.
+-   Tables to be joined must have a column in each which represent the same thing.
+-   There are several different types of joins.
+-   The Inner join is the most commonly use.
+
+### About table joins
+
+In any relational database system, the ability to join tables together is a key querying requirement. Joins are used to combine the rows from two (or more) tables together to form a single table. A join between tables will only be possible if they have at least one column in common. The column doesn’t have to have the same name in each table, and quite often they won’t, but they do have to have a common usage.
+
+If you look at the Schema for the staff database in DB Browser you will see that the  **department**  table and the  **employees**  table both contain a common column 'dept_id'. This means that there is a relationship between the two tables; inserting a dept_id number in the employee record makes details in the department table potentially available. We can use an SQL joining statement to list employees along with their relevant department.
+
+```
+select first_name, last_name, dept_name from employees
+join departments on employees.dept_id = departments.dept_id;
+```
+
+And we can order them by department
+
+```
+select first_name, last_name, dept_name from employees
+join departments on employees.dept_id = departments.dept_id
+order by dept_name;
+```
+
+## Views
+
+### Using SQL code to create views
+
+We can create a View to act as a representation of our data in a format that is useful to us. For example, in the last section we ran an SQL query with a join to give us a summary of the employees and their departments.
+
+```
+select emp_no, first_name, last_name, gender, birth_date, dept_name, hire_date from employees
+join departments on employees.dept_id = departments.dept_id order by last_name;
+```
+
+Once this query has been run in DB Browser it can be saved as a View.
+
+Run the above SQL query and in the results screen select the icon indicated in the following image.  
+(Note. Depending on your Operating system this icon may be located on the top menu bar).
+
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image6.png)
+
+Select 'Save as view' and give the view a name. Now when you select the 'Browse Data' tab this View will be available in addition to the employees and the departments tables.
+
+One advantage of using a View is that any changes to the underlying table will be reflected in the View. For example, changing the name of a department in the departments table will be reflected in every row where that department name appears in the view.
+
+Try changing the name 'Quality Management' to 'Quality Assurance' in the departments table, save the changes by clicking on 'Write Changes' and open the view again to review the changes.
+
+# Import/Export
+
+## Import / Export a Database
+
+### To export a complete database
+
+In DB Browser
+
+-   Select 'File'
+-   Hover over 'Export'
+-   Select 'Database to SQL file'
+-   Select the tables and views you wish to include
+-   Click OK and accept the accepted filename or rename it to something else
+
+### To import a complete database
+
+In DB Browser
+
+-   Select 'File'
+-   Hover over 'Import'
+-   Select 'Database from SQL file'
+-   Browser to your database export file and click 'open'
+
+## Export to CSV
+
+### Exporting a table or view to a csv file
+
+In DB Browser
+
+-   Select 'File'
+-   Hover over 'Export'
+-   Select 'Database as CSV file'
+-   Select the table or view you wish to export and click OK
+
+If the file is saved with a .csv extension it can be opened and read by MS Excel
+
+## Create Database from CSV
+
+### Create a new database and populate it with data from a CSV file
+
+For this exercise we will use the [tweets.csv](https://github.com/DCS-training/IntroToDatabases/raw/main/tweets.csv)  file.
+
+Download this file to your home directory (right-click on link and select 'Save Link As')
+
+In DB Browser
+
+-   Select 'New Database' from the top left menu
+-   Save the database as trump.db and save it to your home directory
+-   When the 'Edit table Definition' box appears select 'Cancel'
+-   Select File > Import > Table from CSV file
+-   Browse to the 'tweets.csv' file, select it and click 'Open'
+-   A preview of the data is displayed; make sure the 'Column Names in Fist Row' checkbox is ticked and click on OK
+-   Click 'Write Changes'
+
+
+## More SQL
+
+Examine the data in the  **tweets**  table that you have imprted into the trump.db
+
+The data in this table is a list of > 50000 tweets by Donald Trump from 2009 to 2019.
+
+Each tweet has been analysed to give it a sentiment score (whether it is positive or negative).
+
+The  **Sentiment**  column indicates the overall sentiment, i.e. Posive, Negative or Neutral
+
+The  **Polarity**  column provides a numerical score ranging from -1 (very negative) through 0 (Neutral) to 1 (very positive)
+
+These scores allow us to perform some analysis of the data using SQL
+
+```
+select
+min(Polarity),
+avg(Polarity),
+max(Polarity)
+from tweets;
+
+```
+
+This returns the most positve, negative and average sentiments of the tweets. As you can see they vary from very negative to very positive with the average being inclined to positive.
+
+The average Polarity is around 0.18
+
+But what if we change the query to filter the tweet by a particular piece of text.
+
+```
+select
+avg(Polarity) from tweets
+where TweetText LIKE '%Clinton%';
+```
+
+Using the wildcard % before and after our term ensures that it finds any reference to it in the tweet text.
+
+You can see from the result of this query that the Polarity of the tweet has dropped significantly to about 0.003
+
+Experiment by editing this query with your own keywords, eg
+
+```
+select
+avg(Polarity) from tweets
+where TweetText LIKE '%Ivanka%';
+```
+
+```
+select
+avg(Polarity) from tweets
+where TweetText LIKE '%Obama%';
+```
+
+You can also use the % wildcard just to examine tweets containing a specific term
+
+```
+select
+* from tweets
+where TweetText LIKE '%impeach%'
+order by created;
+```
+
+The results of any of these queries can be easily saved to a CSV file:
+
+Just click on the button we used earlier to save a View, but this time select 'Export to CSV'
+
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image7.png)
+
+# Resources
+
+## Useful Links
+
+-   [DB Browser for SQLite](http://sqlitebrowser.org/)
+-   [SQL Tutorial](https://www.w3schools.com/sql/)
+-   [SQL Quick Reference](https://www.w3schools.com/sql/sql_quickref.asp)
+
+## Tutorial Files
+
+-   [trump-tweet-archive.csv](https://github.com/DCS-training/IntroToDatabases/blob/main/trump-tweet-archive.csv)  - Trump Tweets since 2009
+    
+-   [tweets.csv](https://github.com/DCS-training/IntroToDatabases/blob/main/tweets.csv)  - Trump Tweets analysed for sentiment
+    
+-   [trump-tweets.db](https://github.com/DCS-training/IntroToDatabases/blob/main/trump-tweets.db)  - SQLite database of Trump's tweets analysed for sentiment
+    
+-   [staff.db](https://github.com/DCS-training/IntroToDatabases/blob/main/staff.db)  - Example Staff database
+
+### Additional Datasets
+
+-   [life_expectancy.csv](https://github.com/DCS-training/IntroToDatabases/blob/main/life_expectancy.csv)
+    
+-   [fertility_rates.csv](https://github.com/DCS-training/IntroToDatabases/blob/main/fertility_rates.csv)
+
+## Further Exercises
+
+### Sinking of the Titanic
+
+RMS Titanic was a British passenger liner operated by the White Star Line that sank in the North Atlantic Ocean on 15 April 1912, after striking an iceberg during her maiden voyage from Southampton to New York City. Of the estimated 2,224 passengers and crew aboard, more than 1,500 died.
+
+One of the reasons that the shipwreck resulted in such loss of life was that there were not enough lifeboats for the passengers and crew. Although there was some element of luck involved in surviving the sinking, some groups of people were more likely to survive than others.
+
+The  [titanic.csv](https://github.com/DCS-training/IntroToDatabases/blob/main/titanic.csv)  file contains data for 887 of the real Titanic passengers. Each row represents one person. The columns describe different attributes about the person including whether they survived, their age, their passenger-class, their sex and the fare they paid.
+
+A usefule exercise to try on your own, using some of the techniques we've explored, would be to compare the survival rate of different groups of passengers, e.g. by gender, passenger class, age, etc.
+
+For example the following shows the average rate of survival by sex (the term 'gender' had not been coined at this stage)
+
+```
+select Sex, avg(Survived) from titanic group by Sex;
+```
+
+The results seem to suggest that the 'women and children first' convention was generally observed
+
+The following query looks at survival rates by passenger class.
+
+```
+select Pclass, avg(Survived) from titanic group by Pclass;
+```
+
+The results suggest that chances of survival were dependant on the cost of your ticket. Possibly because the cheaper the ticket the further you were from a lifeboat.
