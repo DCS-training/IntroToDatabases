@@ -14,7 +14,8 @@
 
 The example below shows a staff database consisting of one table containing a row for each staff member. This is similar to a worksheet in an Excel spreadsheet.
 
-![image](https://github.com/DCS-training/DHRSE_SummerSchool_CDCS/blob/main/images/DMMJanuaryTextAnalysis_0%20(1).jpg)
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image1.png)
+
 
 However, in the above example you can see that there is two sets of  **related**  information; information about staff members and departmental names. As you can see there is much repitition in the  **dept_name**  column. In cases such as this the two sets of related data can be separated into two separate tables. This will form a basic  **Relational Database**
 
