@@ -11,7 +11,7 @@ This repository has a [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-
 
 ## How to use this repository
 
-Follow along the tutorial using the 'tutorial.md' file. You will also need to install **DBrowser for SQLite** to create and manage the databases.
+Follow along the tutorial using the ['tutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/Tutorial.md) file. You will also need to install **DBrowser for SQLite** to create and manage the databases.
 
 
 ## Software Installation
