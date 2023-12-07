@@ -472,7 +472,7 @@ The results of any of these queries can be easily saved to a CSV file:
 
 Just click on the button we used earlier to save a View, but this time select 'Export to CSV'
 
-![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image7.png)
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image6.PNG)
 
 # Resources
 
