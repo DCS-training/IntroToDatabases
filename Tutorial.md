@@ -343,7 +343,7 @@ Once this query has been run in DB Browser it can be saved as a View.
 Run the above SQL query and in the results screen select the icon indicated in the following image.  
 (Note. Depending on your Operating system this icon may be located on the top menu bar).
 
-![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image6.png)
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image6.PNG)
 
 Select 'Save as view' and give the view a name. Now when you select the 'Browse Data' tab this View will be available in addition to the employees and the departments tables.
 
