@@ -49,7 +49,7 @@ On the right hand side therte are two further panes, at the top is the Edit Data
 
 ## Opening the staff database
 
-For this exercise we will be using the '**staff**' database. You can download it from [this link](https://github.com/DCS-training/IntroToDatabases/blob/main/staff.db){:target="_blank"}
+For this exercise we will be using the '**staff**' database. You can download it from [this link](https://github.com/DCS-training/IntroToDatabases/blob/main/staff.db)
 
 Save the file to your Home directory or to another appropriate location on your computer.
 
