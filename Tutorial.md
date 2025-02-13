@@ -438,7 +438,7 @@ But what if we change the query to filter the tweet by a particular piece of tex
 ```
 select
 avg(Polarity) from tweets
-where TweetText LIKE '%Clinton%';
+where Tweet Text LIKE '%Clinton%';
 ```
 
 Using the wildcard % before and after our term ensures that it finds any reference to it in the tweet text.
