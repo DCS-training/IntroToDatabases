@@ -50,8 +50,32 @@ A MongoDB cluster is a group of connected MongoDB instances (nodes). This facili
 Connect to Cluster0
 On the next screen, click 'Choose a Collection Method', then click 'Compass'.
 
+Select the following:
+Connecting with MongoDB Compass
+- I don't have MongoDB Compass Installed
 
-https://www.mongodb.com/docs/compass/install/
+1. Select your operating system and download MongoDB Compass
+- [select appropriate system]
+- Download and install Compass
+
+2. Copy the connection string, then open MongoDB Compass
+- You must copy the Connection String and save this somewhere secure and accessible. Such as Evernote, or in an encrypted drive.
+
+Click done.
+
+MongoDB Compass
+Open the compass on your OS. On the UI there is a + next to Connections, click this and copy the saved connection string into the URL box. Name your database, and click Save and Connect.
+If you even need your string again, you can find it on the Project Overview Page. Note that you will need to insert your password into the string when copying, as below:
+mongodb+srv://alexwarrencrest_db_user:<db_password>@cluster0.bnjltc7.mongodb.net/?appName=Cluster0
+
+To create a database, load your cluster and click the + next to the CLuster name in the left hand panel. In mongo, databases are formed of multiple collections, each of which stores searchable data.
+Name the Database, and then name the collection 'SIMD_Ranks'.
+
+For this session, we will be using the Scottish Index of Multiple Deprivation Dataset, you can download it here:https://github.com/DCS-training/IntroToDatabases/blob/main/SIMD%20Ranks.csv 
+
+Save this file locally to your device or appropriate directory. To load this data into your database, click the green plus, and import JSON or CSV file. 
+Note that each row is now an invidual document, stored and displayed in a JSON format. 
+
 
 
 
