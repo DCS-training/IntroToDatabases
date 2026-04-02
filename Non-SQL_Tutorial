@@ -15,6 +15,22 @@ In the above example, you can also see an example of nested data. This is standa
 
 MongoDB
 
+MongoDB is a database provider with different tools for their operation. We will be stting up a database, and installing the MongoDB Compass, to easily develop and navigate a database. 
+MongoDB is cloud based, and the creation of a database requires registration. 
+
+The Setup
+
+https://www.mongodb.com/
+
+Sign in using either gmail or github account.
+Follow the instructions verify your email address and setup account authentication.
+
+
+https://www.mongodb.com/docs/compass/install/
+
+
+
+
 
 
 The database system will provide tools through which you can query your data. There are also built in AI helpers that will construct the appropriate query from a basic descriptions.
