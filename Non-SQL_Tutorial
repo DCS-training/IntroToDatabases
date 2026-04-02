@@ -48,7 +48,7 @@ Creating the Cluster
 A MongoDB cluster is a group of connected MongoDB instances (nodes). This faciliates multiple data access points and sharing of the database across teams.
 
 Connect to Cluster0
-On the next screen, click 'Choose a Collection Method'
+On the next screen, click 'Choose a Collection Method', then click 'Compass'.
 
 
 https://www.mongodb.com/docs/compass/install/
