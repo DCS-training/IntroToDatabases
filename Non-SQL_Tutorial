@@ -11,3 +11,13 @@ Below is an example of a non-sql database on MongoDB. The data consists of publi
 ![Sample Image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Markdown%20file.png)
 
 In the above example, you can also see an example of nested data. This is standard in a Json format, but allows your object to include its own Rows/Columns structured data. This is very handy if you have associated strucutred data, such as image metadata, or comments to social media posts for example.
+
+
+MongoDB
+
+
+
+The database system will provide tools through which you can query your data. There are also built in AI helpers that will construct the appropriate query from a basic descriptions.
+
+In addition, their are tools in Python and R that allow data to be retrieved or uploaded from the database with the right urls and permissions. 
+
