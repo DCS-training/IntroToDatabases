@@ -87,7 +87,7 @@ The Query generator also generates queries from simple English. The results with
 find the top 10 Data_zones by population
 find the top 10 Data_zones by population, and return full documents
 
-The explain tab provides an exact breakdown of the operations that the compass has undertaken. 
+The Explain tab provides an exact breakdown of the operations that the compass has undertaken. 
 
 The Aggregations Tab
 
