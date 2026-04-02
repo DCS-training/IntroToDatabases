@@ -98,5 +98,8 @@ Try this with other perametres, and build your database through coolections of a
 
 The database system will provide tools through which you can query your data. There are also built in AI helpers that will construct the appropriate query from a basic descriptions.
 
+
+[tbc]
+
 In addition, their are tools in Python and R that allow data to be retrieved or uploaded from the database with the right urls and permissions. 
 
