@@ -23,7 +23,32 @@ The Setup
 https://www.mongodb.com/
 
 Sign in using either gmail or github account.
-Follow the instructions verify your email address and setup account authentication.
+Follow the instructions verify your email address and setup Multi factor authentication.
+
+ Below the the menu system is a toolbar with four options; New Database, Open Database, Write Changes and Revert Changes. Below the toolbar is a 4-tabbed pane for; Database Structure, Browse Data, Edit Proagmas and Execute SQL. Initially theese will be quite empty as we haven't created ort opened a database yet. In general we will see how each of these are used as we go through the lesson with the exception of the Edit Pragmas tab which deals with system wide parameters which we won't want to change
+When accepted, there are a series of questions which will shape you experience of the system
+
+![Sample Image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/mongo%20getting%20to%20know%20you.png)
+
+Under getting to know your project, select the appropriate answers for your needs. If you are unsure or do not know yet, input the below:
+What programming language are you primarily building on MongoDB with?
+- Python
+
+What type(s) of data will your project use?
+- Not sure / None
+
+Will your application include any of the following architectural models?
+- Not sure / None
+
+In the following screen 'Deploy your cluster', select 'Free'. Unless storing large multi-media files on the cloud, the free version is more than enough to train and learn with Mongo, and more so to create a referential database to larger datasets stored elsewhere.
+
+Click Create Deployment
+
+Creating the Cluster
+A MongoDB cluster is a group of connected MongoDB instances (nodes). This faciliates multiple data access points and sharing of the database across teams.
+
+Connect to Cluster0
+On the next screen, click 'Choose a Collection Method'
 
 
 https://www.mongodb.com/docs/compass/install/
