@@ -6,11 +6,11 @@ A non-SQL database is a database that:
 - can handle data that is not uniform, or in different formats
 - typically stores data in a single structure, such as a json
 
-Below is an example of a non-sql database on MongoDB. The data consists of public metrics from Twitter - pseudoanonymised and preprocessed.
+Below is an example of a non-sql database on MongoDB, in the MongoDB Compass UI. The data consists of public metrics from Twitter - pseudoanonymised and preprocessed.
 
 ![Sample Image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Markdown%20file.png)
 
-In the above example, you can also see an example of nested data. This is standard in a Json format, but allows your object to include its own Rows/Columns structured data. This is very handy if you have associated strucutred data, such as image metadata, or comments to social media posts for example.
+In the above example, you can also see an example of nested data under sentiment_scores. This is the result of a sentiment analysis operation performed using VADER in Python. The scores have been stored within the document, and can be opened using the drop down arrow in the MongoDB Compass UI. Nested data is standard in a Json format, but allows your object to include its own Rows/Columns structured data. This is very handy if you have associated strucutred data, such as image metadata, or comments to social media posts for example.
 
 
 ## MongoDB
