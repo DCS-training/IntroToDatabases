@@ -6,7 +6,7 @@ A non-SQL database is a database that:
 - can handle data that is not uniform, or in different formats
 - typically stores data in a single structure, such as a json
 
-Below is an example of a non-sql database on MongoDB. The data consists of public metrics from 
+Below is an example of a non-sql database on MongoDB. The data consists of public metrics from Twitter - pseudoanonymised and preprocessed.
 
 ![Sample Image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Markdown%20file.png)
 
