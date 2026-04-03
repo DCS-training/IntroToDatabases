@@ -106,6 +106,8 @@ Name the Database 'SD_Mongo', and then name the collection 'SIMD_Ranks'.
 
 For this session, we will be using the Scottish Index of Multiple Deprivation Dataset, you can download it here: https://github.com/DCS-training/IntroToDatabases/blob/main/SIMD%20Ranks.csv 
 
+This dataset models relative social deprivation across different areas of scotland. It includes data on relative deprivation according to Income, Employment, Education, Health, Access to Services, Crime, Housing and demographic data relative to the datazone.
+
 Save this file locally to your device or appropriate directory. To load this data into your database, click the green plus, and import JSON or CSV file. 
 Note that each row is now an individual document, stored and displayed in a JSON format. 
 
