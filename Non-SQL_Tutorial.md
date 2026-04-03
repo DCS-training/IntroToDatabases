@@ -109,7 +109,7 @@ For this session, we will be using the Scottish Index of Multiple Deprivation Da
 Save this file locally to your device or appropriate directory. To load this data into your database, click the green plus, and import JSON or CSV file. 
 Note that each row is now an individual document, stored and displayed in a JSON format. 
 
-We will be exploring only the Documents and Aggregations tabs today. 
+We will be exploring only the Documents, Aggregations and Schema tabs today. 
 
 The Documents tab allows you to view and scroll through the documents. It is useful to quickly assess whether the data looks as expected, and to identify features and commonalities across the large dataset.
 This tab also allows basic queries to return results through the compass using Mongo Query Language. For example:
@@ -169,6 +169,12 @@ You will notice that different operations appear at different stages. Much like 
 Click the drop down menu for the operations in each stage to scroll through the operations and read their descriptions.
 
 Try to create two ore collections of data using these operations.
+
+
+### The Schema Tab
+
+The Schema tab analyses your collection and provides quick analytical insights based on the data available. It can provide  histograms or charts for values and shows what data type (strings, numeric, object etc.) each variable is. It can therefor help in determining percentages within data and inform closer analysis.
+
 
 ### Backups
 All new collections will be saved as they are created. When you end and return to the session, the data will remain and there is no need to save it again.
