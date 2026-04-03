@@ -173,7 +173,7 @@ Try to create two ore collections of data using these operations.
 
 ### The Schema Tab
 
-The Schema tab analyses your collection and provides quick analytical insights based on the data available. It can provide  histograms or charts for values and shows what data type (strings, numeric, object etc.) each variable is. It can therefor help in determining percentages within data and inform closer analysis.
+The Schema tab analyses your collection and provides quick analytical insights based on the data available. It can provide  histograms or charts for values and shows what data type (strings, numeric, object etc.) each variable is. It can therefor help in determining percentages within data and inform closer analysis by seeing the fields, types and data distributions.
 
 
 ### Backups
