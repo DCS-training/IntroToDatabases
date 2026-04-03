@@ -263,8 +263,9 @@ conn <- mongo(
 )
 
 data <- conn$find()
-``` 
+```
 
+```
 #Point to a NEW collection name
 conn <- mongo(
   collection = "new_collection_name",
@@ -274,7 +275,7 @@ conn <- mongo(
 
 #Insert data → this creates the collection
 conn$insert(data)
-
+```
 
 ## Resources
 https://learn.mongodb.com/ 
