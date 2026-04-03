@@ -15,10 +15,10 @@ In the above example, you can also see an example of nested data under sentiment
 
 ## MongoDB
 
-MongoDB is a database provider with different tools for their operation. We will be stting up a database, and installing the MongoDB Compass, to easily develop and navigate a database. 
-MongoDB is cloud based, and the creation of a database requires registration. 
+MongoDB is a database provider with different tools for operations. In today's session, we will be setting up a database, and installing the MongoDB Compass, to easily develop and navigate a new database.
+MongoDB is cloud based, and the creation of a database requires registration. They can be locally hosted also - though it is recommened to use a the CLoud as data can then be accessed from any machine with the correct connection strings.
 
-*The Setup*
+### The Setup
 
 Follow this link: https://www.mongodb.com/
 
