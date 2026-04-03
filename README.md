@@ -16,8 +16,8 @@ This repository has a [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-
 ## How to use this repository
 
 There are two options:
-Follow along the tutorial using the ['tutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/Tutorial.md) file. 
-Or for Non-Sql users ['Non-SQL_Tutorial.md] (https://github.com/DCS-training/IntroToDatabases/blob/main/Non-SQL_Tutorial.md) 
+Follow along the tutorial using the ['SQLTutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/SQL_Tutorial.md) file. 
+Or for Non-Sql users ['Non-SQL_Tutorial.md'] (https://github.com/DCS-training/IntroToDatabases/blob/main/Non-SQL_Tutorial.md) 
 
 You will also need to install either **DBrowser for SQLite** or **MongoDB** to create and manage the databases.
 
