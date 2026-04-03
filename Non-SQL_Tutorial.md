@@ -32,7 +32,7 @@ To transform our original staff database into a relational database we would cre
 
 ## What is a Non-Relational Database? 
 
-A non-relational databasem also known as a non-SQL database is a database that:
+A non-relational database also known as a non-SQL database is a database that:
 - can store and handle data that doesn't fit into rows and columns
 - can handle data that is not uniform, or in different formats
 - typically stores data in a single structure, such as a json
