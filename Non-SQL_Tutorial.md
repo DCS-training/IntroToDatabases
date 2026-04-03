@@ -1,5 +1,36 @@
+# Introduction
 
-# What is a Non-SQL Database? 
+## Some Definitions
+
+### What is a Database?
+
+**A Database is:**
+
+-   a structured set of data held in a computer
+    
+-   a large collection of data organized especially for rapid search and retrieval
+   
+-   a collection of information that is organized so that it can be easily accessed, managed and updated
+
+The example below shows a staff database consisting of one table containing a row for each staff member. This is similar to a worksheet in an Excel spreadsheet.
+
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image1.png)
+
+
+However, in the above example you can see that there is two sets of  **related**  information; information about staff members and departmental names. As you can see there is much repitition in the  **dept_name**  column. In cases such as this the two sets of related data can be separated into two separate tables. This will form a basic  **Relational Database**
+
+## What is a Relational Database?
+
+**A Relational Database is:**
+
+A relational database is a collection of data items organised as a set of tables. Relationships can be defined between the data in one table and the data in another or many other tables. The relational database system will provide mechanisms by which you can query the data in the tables, re-assemble the data in various ways without altering the data in the actual tables. This querying is usually done using SQL (Structured Query Language). This is a relatively straight forward language to learn, certainly for simple queries.
+
+To transform our original staff database into a relational database we would create a  **departments**  table to hold the name of each unique department and link it to the  **staff**  table using the dept_id which is common in both fields. The following diagam illustrates this.
+
+![image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/Image2.png)
+
+
+## What is a Non-SQL Database? 
 
 A non-SQL database is a database that:
 - can store and handle data that doesn't fit into rows and columns
@@ -43,9 +74,10 @@ Will your application include any of the following architectural models?
 
 In the following screen 'Deploy your cluster', select 'Free'. Unless storing large multi-media files on the cloud, the free version is more than enough to train and learn with Mongo, and more so to create a referential database to larger datasets stored elsewhere.
 
-Click Create Deployment
+Click 'Create Deployment'
 
-*Creating the Cluster*
+#### Creating the Cluster
+
 A MongoDB cluster is a group of connected MongoDB instances (nodes). This faciliates multiple data access points and sharing of the database across teams.
 
 Connect to Cluster0
@@ -60,48 +92,49 @@ Connecting with MongoDB Compass
 - Download and install Compass
 
 2. Copy the connection string, then open MongoDB Compass
-- You must copy the Connection String and save this somewhere secure and accessible. Such as Evernote, or in an encrypted drive.
+- You must copy the Connection String and save this somewhere secure and accessible. Such as Evernote, or in an encrypted drive. This is necessary for later connections and to access the database in Python, R and from the MongoDB Compass.
 
 Click done.
 
 ### MongoDB Compass
-Open the compass on your OS. On the UI there is a + next to Connections, click this and copy the saved connection string into the URL box. Name your database, and click Save and Connect.
-If you even need your string again, you can find it on the Project Overview Page. Note that you will need to insert your password into the string when copying, as below:
+Open the compass in your OS. On the UI there is a + next to Connections, click this and copy the saved connection string into the URL box. Name your database, and click Save and Connect.
+If you even need your string again, you can find it on the Project Overview Page on the MongoDB website. Note that you will need to insert your password into the string when copying, as below:
 mongodb+srv://alexwarrencrest_db_user:<db_password>@cluster0.bnjltc7.mongodb.net/?appName=Cluster0
 
-To create a database, load your cluster and click the + next to the CLuster name in the left hand panel. In mongo, databases are formed of multiple collections, each of which stores searchable data.
+To create a database, load your cluster and click the + next to the Cluster name in the left hand panel. In mongo, databases are formed of multiple collections, each of which stores searchable data.
 Name the Database 'SD_Mongo', and then name the collection 'SIMD_Ranks'.
 
-For this session, we will be using the Scottish Index of Multiple Deprivation Dataset, you can download it here:https://github.com/DCS-training/IntroToDatabases/blob/main/SIMD%20Ranks.csv 
+For this session, we will be using the Scottish Index of Multiple Deprivation Dataset, you can download it here: https://github.com/DCS-training/IntroToDatabases/blob/main/SIMD%20Ranks.csv 
 
 Save this file locally to your device or appropriate directory. To load this data into your database, click the green plus, and import JSON or CSV file. 
 Note that each row is now an individual document, stored and displayed in a JSON format. 
 
 We will be exploring only the Documents and Aggregations tabs today. 
 
-The Documents tab allows you to view and scroll through the documents. It is useful to quickly asses whether the data looks as expected, and to identify features and commonalities across the large dataset.
+The Documents tab allows you to view and scroll through the documents. It is useful to quickly assess whether the data looks as expected, and to identify features and commonalities across the large dataset.
 This tab also allows basic queries to return results through the compass using Mongo Query Language. For example:
 {Council_area: "Aberdeen City"}
-This will return all results where the value of Council_area is Aberdeen City.
+This will return all results where the value of Council_area is Aberdeen City. From this we can quickly ascertain the scale of the results or any one variable across the collection. 
 
 The Query generator also generates queries from simple English. The results with differ so be specific and use known terms in the database. Try the below:
 find the top 10 Data_zones by population
 find the top 10 Data_zones by population, and return full documents
 
-The Explain tab provides an exact breakdown of the operations that the compass has undertaken. 
+Moreover, the Explain tab provides an exact breakdown of the operations that the compass has undertaken, including the raw outputs in json formats.
 
 ### The Aggregations Tab
 
 The aggregations tab faciliates more complex operations. To create a new aggregation, click the tab and insert this query:
 find the highest 5% of zones by Housing_Domain_Rank, and save as new collection
 
-
 Then click Run
 
+You should have a new collection of data.
+
 Try this with other perametres, and build your database through coolections of aggregated data. 
-You will notice that different operations appear at different stages. 
 
-
+#### Stages
+You will notice that different operations appear at different stages. Much like programming languages, Mongo completes each operation iteratively.
 `Stage 1 $setWindowFields
 {
   sortBy: {
@@ -124,17 +157,20 @@ You will notice that different operations appear at different stages.
 `Stage 3 '$Out'
 "Top5Percent_Housing_Domain_Rank"`
 
-Much like programmes, Mongo completes each operation iteratively.
+
 'Out' for example is similar to export in other programmes, and writes a new collection with the results of the aggregation. It is usually in the final stage. 
-'Match' is a function useful for searching based on specific variables. It is maleable enough to take handle a range, mean or other distribtuions of numerical data, and also exact strings.
+'Match' is a function useful for searching based on specific variables. It is maleable enough to handle a range, mean or other distributions of numerical data, and also exact strings.
 'Count' is similarly useful for summarising groups of documents.
 
 Click the drop down menu for the operations in each stage to scroll through the operations and read their descriptions.
 
+Try to create two ore collections of data using these operations.
 
+### Backups
 All new collections will be saved as they are created. When you end and return to the session, the data will remain and there is no need to save it again.
-However, there is no 'undo' button in the compass. So it is a good idea to create duplicate backups of the raw data and at different stages, incase of an error.  You can create a backup in a number of ways. The easiest is to create an aggregation that duplicates the data:
-Create a duplicate of this collection called Backup_SIMD_Ranks
+However, there is no 'undo' button in the compass as data is written at each operation. It is a good idea to create duplicate backups of the raw data and at different stages, incase of an error.  You can create a backup in a number of ways. The easiest is to create an aggregation that duplicates the data:
+"Create a duplicate of this collection called Backup_SIMD_Ranks"
+
 or create a stage manually 
 $out
 "Backup_SIMD_Ranks"
@@ -145,11 +181,11 @@ This sort of practice provides you with a set of stored collections that can be 
 ## Import and Export
 
 Data can be exported in the UI to both json and csv formats. An entire collection can be exported, or the results of a specific aggregation.
-Export the collection Top5Percent_Housing_Domain_Rank to CSV, and to JSON. 
+In th UI, export the collection Top5Percent_Housing_Domain_Rank to CSV, and to JSON. 
 
 ### In Python and R
 
-Both Python and R have dedicated packages to work with a mongoDB database. 
+Both Python and R have dedicated packages to work with a mongoDB database. Data can be retrieved, written and new collections added or deleted.
 
 In python we use PyMongo.
 
@@ -222,4 +258,7 @@ conn$insert(data)
 https://learn.mongodb.com/ 
 https://www.mongodb.com/resources/languages/pymongo-tutorial
 https://cran.r-project.org/web/packages/mongolite/mongolite.pdf
+
+# Future Workshops 
+https://www.cdcs.ed.ac.uk/events/comparing-sentiment-analysis-models-r
 
