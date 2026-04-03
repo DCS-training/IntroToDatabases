@@ -1,5 +1,5 @@
 
-What is a Non-SQL Database? 
+# What is a Non-SQL Database? 
 
 A non-SQL database is a database that:
 - can store and handle data that doesn't fit into rows and columns
@@ -13,24 +13,25 @@ Below is an example of a non-sql database on MongoDB. The data consists of publi
 In the above example, you can also see an example of nested data. This is standard in a Json format, but allows your object to include its own Rows/Columns structured data. This is very handy if you have associated strucutred data, such as image metadata, or comments to social media posts for example.
 
 
-MongoDB
+## MongoDB
 
 MongoDB is a database provider with different tools for their operation. We will be stting up a database, and installing the MongoDB Compass, to easily develop and navigate a database. 
 MongoDB is cloud based, and the creation of a database requires registration. 
 
-The Setup
+*The Setup*
 
-https://www.mongodb.com/
+Follow this link: https://www.mongodb.com/
 
 Sign in using either gmail or github account.
 Follow the instructions verify your email address and setup Multi factor authentication.
 
- Below the the menu system is a toolbar with four options; New Database, Open Database, Write Changes and Revert Changes. Below the toolbar is a 4-tabbed pane for; Database Structure, Browse Data, Edit Proagmas and Execute SQL. Initially theese will be quite empty as we haven't created ort opened a database yet. In general we will see how each of these are used as we go through the lesson with the exception of the Edit Pragmas tab which deals with system wide parameters which we won't want to change
+Below the the menu system is a toolbar with four options; New Database, Open Database, Write Changes and Revert Changes. Below the toolbar is a 4-tabbed pane for; Database Structure, Browse Data, Edit Proagmas and Execute SQL. Initially theese will be quite empty as we haven't created ort opened a database yet. In general we will see how each of these are used as we go through the lesson with the exception of the Edit Pragmas tab which deals with system wide parameters which we won't want to change.
+
 When accepted, there are a series of questions which will shape you experience of the system
 
 ![Sample Image](https://github.com/DCS-training/IntroToDatabases/blob/main/images/mongo%20getting%20to%20know%20you.png)
 
-Under getting to know your project, select the appropriate answers for your needs. If you are unsure or do not know yet, input the below:
+Under "Getting to know your project", select the appropriate answers for your needs. If you are unsure or do not know yet, input the below:
 What programming language are you primarily building on MongoDB with?
 - Python
 
@@ -44,7 +45,7 @@ In the following screen 'Deploy your cluster', select 'Free'. Unless storing lar
 
 Click Create Deployment
 
-Creating the Cluster
+*Creating the Cluster*
 A MongoDB cluster is a group of connected MongoDB instances (nodes). This faciliates multiple data access points and sharing of the database across teams.
 
 Connect to Cluster0
@@ -63,7 +64,7 @@ Connecting with MongoDB Compass
 
 Click done.
 
-MongoDB Compass
+### MongoDB Compass
 Open the compass on your OS. On the UI there is a + next to Connections, click this and copy the saved connection string into the URL box. Name your database, and click Save and Connect.
 If you even need your string again, you can find it on the Project Overview Page. Note that you will need to insert your password into the string when copying, as below:
 mongodb+srv://alexwarrencrest_db_user:<db_password>@cluster0.bnjltc7.mongodb.net/?appName=Cluster0
@@ -89,7 +90,7 @@ find the top 10 Data_zones by population, and return full documents
 
 The Explain tab provides an exact breakdown of the operations that the compass has undertaken. 
 
-The Aggregations Tab
+### The Aggregations Tab
 
 The aggregations tab faciliates more complex operations. To create a new aggregation, click the tab and insert this query:
 find the highest 5% of zones by Housing_Domain_Rank, and save as new collection
@@ -101,7 +102,7 @@ Try this with other perametres, and build your database through coolections of a
 You will notice that different operations appear at different stages. 
 
 
-Stage 1 $setWindowFields
+`Stage 1 $setWindowFields
 {
   sortBy: {
     SIMD2020_Housing_Domain_Rank: -1
@@ -111,17 +112,17 @@ Stage 1 $setWindowFields
       $percentRank: {}
     }
   }
-}
+}`
 
-Stage 2 $match
+`Stage 2 $match
 {
   percentile: {
     $gte: 0.95
   }
-}
+}`
 
-Stage 3 '$Out'
-"Top5Percent_Housing_Domain_Rank"
+`Stage 3 '$Out'
+"Top5Percent_Housing_Domain_Rank"`
 
 Much like programmes, Mongo completes each operation iteratively.
 'Out' for example is similar to export in other programmes, and writes a new collection with the results of the aggregation. It is usually in the final stage. 
@@ -141,59 +142,59 @@ $out
 This sort of practice provides you with a set of stored collections that can be reloaded if needed. They are also stored together in the UI and are therefor legible.
 
 
-Import and Export
+## Import and Export
 
 Data can be exported in the UI to both json and csv formats. An entire collection can be exported, or the results of a specific aggregation.
 Export the collection Top5Percent_Housing_Domain_Rank to CSV, and to JSON. 
 
-In Python and R
+### In Python and R
 
 Both Python and R have dedicated packages to work with a mongoDB database. 
 
 In python we use PyMongo.
 
-Python
-pip install pymongo
+#### Python
+`pip install pymongo`
 
-from pymongo import MongoClient
+`from pymongo import MongoClient` 
 
-# A clean way to load data into Python
+#A clean way to load data into Python
 Connection_String = [Your Connection String]
 client = MongoClient(Connection_String)
 db = client["SD_Mongo"]
 collection = db["SIMD_Ranks"]
 data = collection.find()
 
-# or a compressed version
+#or a compressed version
 Connection_String = [Your Connection String]
 client = MongoClient(Connection_String)
 data = client["SD_Mongo"]["SIMD_Ranks"].find()
 
-# an operation to transform data
+#an operation to transform data
 
-# Upload new data to replace a collection
+#Upload new data to replace a collection
 conn$drop()        # deletes collection
 conn$insert(data)  # uploads fresh data
 
 #Warning. Be sure to upload data to either a new collection, or have a backup other wise it with either upend or overright what is already stored there.
 
-# Create a new collection
+#Create a new collection
 new_conn <- mongo(
   collection = "New_Collection_Name",
   db = "SD_Mongo",
   url = connection_string
 )
-# Replace a collection
+#Replace a collection
 new_conn$drop()        # deletes collection
 new_conn$insert(data)  # uploads fresh data
 
-# Upload a single Document
+#Upload a single Document
 new_conn$insert('{"Col1": "value", "Col2": value}')
 
-
+#### R 
 In R we use mongolite
 
-install.packages("mongolite")
+`install.packages("mongolite")
 library(mongolite)
 
 connection_string <- "[Your Connection String]"
@@ -204,21 +205,21 @@ conn <- mongo(
   url = connection_string
 )
 
-data <- conn$find()
+data <- conn$find()` 
 
-# Point to a NEW collection name
+#Point to a NEW collection name
 conn <- mongo(
   collection = "new_collection_name",
   db = "SD_Mongo",
   url = connection_string
 )
 
-# Insert data → this creates the collection
+#Insert data → this creates the collection
 conn$insert(data)
 
 
-
-[tbc]
-
-In addition, their are tools in Python and R that allow data to be retrieved or uploaded from the database with the right urls and permissions. 
+## Resources
+https://learn.mongodb.com/ 
+https://www.mongodb.com/resources/languages/pymongo-tutorial
+https://cran.r-project.org/web/packages/mongolite/mongolite.pdf
 
