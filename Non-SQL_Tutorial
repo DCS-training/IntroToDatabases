@@ -94,7 +94,51 @@ The Aggregations Tab
 The aggregations tab faciliates more complex operations. To create a new aggregation, click the tab and insert this query:
 find the highest 5% of zones by Housing_Domain_Rank, and save as new collection
 
+
+Then click Run
+
 Try this with other perametres, and build your database through coolections of aggregated data. 
+You will notice that different operations appear at different stages. 
+
+
+Stage 1 $setWindowFields
+{
+  sortBy: {
+    SIMD2020_Housing_Domain_Rank: -1
+  },
+  output: {
+    percentile: {
+      $percentRank: {}
+    }
+  }
+}
+
+Stage 2 $match
+{
+  percentile: {
+    $gte: 0.95
+  }
+}
+
+Stage 3 '$Out'
+"Top5Percent_Housing_Domain_Rank"
+
+Much like programmes, Mongo completes each operation iteratively.
+'Out' for example is similar to export in other programmes, and writes a new collection with the results of the aggregation. It is usually in the final stage. 
+'Match' is a function useful for searching based on specific variables. It is maleable enough to take handle a range, mean or other distribtuions of numerical data, and also exact strings.
+'Count' is similarly useful for summarising groups of documents.
+
+Click the drop down menu for the operations in each stage to scroll through the operations and read their descriptions.
+
+
+All new collections will be saved as they are created. When you end and return to the session, the data will remain and there is no need to save it again.
+However, there is no 'undo' button in the compass. So it is a good idea to create duplicate backups of the raw data and at different stages, incase of an error.  You can create a backup in a number of ways. The easiest is to create an aggregation that duplicates the data:
+Create a duplicate of this collection called SIMD_Ranks_Backup
+or create a stage manually 
+$out
+"SIMD_Ranks_Backup"
+
+
 
 
 
