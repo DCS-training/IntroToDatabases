@@ -19,7 +19,7 @@ There are two options:
 Follow along the tutorial using the ['SQLTutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/SQL_Tutorial.md) file. 
 Or for Non-Sql users ['Non-SQL_Tutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/Non-SQL_Tutorial.md) 
 
-You will also need to install either **DBrowser for SQLite** or **MongoDB** to create and manage the databases.
+You will also need to install **DBrowser for SQLite**  for the SQL tutorial **MongoDB** for the non SQL tutorial to create and manage the databases.
 
 ## Software Installation
 
