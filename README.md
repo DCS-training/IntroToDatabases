@@ -3,9 +3,11 @@
 
 This repository host the material connected to a training developed by **Dave Elsmore**, and **Alex Crest**.
 Managing data has become increasingly important in the Humanities and Social Sciences. 
-Databases provide a powerful tool to allow for the storage, structuring and analysis of large amounts of data. In this workshop we will use SQLite or MongoDB, both of which are flexible open-source databases, to learn some of the basic concepts of database design and usage. 
+Databases provide a powerful tool to allow for the storage, structuring and analysis of large amounts of data. 
 
-In this tutorial you can learn: Basic database design, Importing and exporting data, Querying datasets, Analysing your data.
+There are two workshops: one on relational databases and anothe on non-relational databases. The former uses SQLite, and the latter MongoDB, both of which are flexible open-source programmes, to learn some of the basic concepts of database design and usage. 
+
+In both tutorials you can learn: Basic database design, Importing and exporting data, Querying datasets, Analysing your data.
 
 ## Copyright
 
