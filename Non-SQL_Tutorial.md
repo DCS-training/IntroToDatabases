@@ -187,9 +187,9 @@ This sort of practice provides you with a set of stored collections that can be 
 Data can be exported in the UI to both json and csv formats. An entire collection can be exported, or the results of a specific aggregation.
 In th UI, export the collection Top5Percent_Housing_Domain_Rank to CSV, and to JSON. 
 
-### In Python and R
+### Optional: In Python and R
 
-Both Python and R have dedicated packages to work with a mongoDB database. Data can be retrieved, written and new collections added or deleted.
+Both Python and R have dedicated packages to work with a mongoDB database. Data can be retrieved, written and new collections added or deleted. The below resources are optional:
 
 In python we use PyMongo.
 
