@@ -114,7 +114,11 @@ We will be exploring only the Documents and Aggregations tabs today.
 The Documents tab allows you to view and scroll through the documents. It is useful to quickly assess whether the data looks as expected, and to identify features and commonalities across the large dataset.
 This tab also allows basic queries to return results through the compass using Mongo Query Language. For example:
 {Council_area: "Aberdeen City"}
+
 This will return all results where the value of Council_area is Aberdeen City. From this we can quickly ascertain the scale of the results or any one variable across the collection. 
+To search data such as this, adapt the below query:
+{Variable:'Value'}
+
 
 The Query generator also generates queries from simple English. The results with differ so be specific and use known terms in the database. Try the below:
 find the top 10 Data_zones by population
