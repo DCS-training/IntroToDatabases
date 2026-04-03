@@ -1,9 +1,11 @@
-# Intro To Databases with SQLite
 
-This repository host the material connected to a training developed by **Dave Elsmore** ([Edina](https://edina.ac.uk/)) for CDCS. 
+# Intro to Databases
+
+This repository host the material connected to a training developed by **Dave Elsmore**, and **Alex Crest**.
 Managing data has become increasingly important in the Humanities and Social Sciences. 
-Databases provide a powerful tool to allow for the storage, structuring and analysis of large amounts of data. In this workshop we will use SQLite, a flexible open-source database, to learn some of the basic concepts of database design and usage. 
-In this In this tutorial you can learn: Basic database design, Importing and exporting data, Querying datasets, Analysing your data.
+Databases provide a powerful tool to allow for the storage, structuring and analysis of large amounts of data. In this workshop we will use SQLite or MongoDB, both of which are flexible open-source databases, to learn some of the basic concepts of database design and usage. 
+
+In this tutorial you can learn: Basic database design, Importing and exporting data, Querying datasets, Analysing your data.
 
 ## Copyright
 
@@ -11,8 +13,11 @@ This repository has a [![License: CC BY-NC 4.0](https://licensebuttons.net/l/by-
 
 ## How to use this repository
 
-Follow along the tutorial using the ['tutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/Tutorial.md) file. You will also need to install **DBrowser for SQLite** to create and manage the databases.
+There are two options:
+Follow along the tutorial using the ['tutorial.md'](https://github.com/DCS-training/IntroToDatabases/blob/main/Tutorial.md) file. 
+Or for Non-Sql users ['Non-SQL_Tutorial.md] (https://github.com/DCS-training/IntroToDatabases/blob/main/Non-SQL_Tutorial.md) 
 
+You will also need to install either **DBrowser for SQLite** or **MongoDB** to create and manage the databases.
 
 ## Software Installation
 
@@ -33,3 +38,19 @@ The download is a windows executable file which you can run by double clicking i
 An OSX installer can be found here:
 
 [http://sqlitebrowser.org/dl/](http://sqlitebrowser.org/dl/)
+
+### MongoDB
+
+MongoDB is a popular, open-source, NoSQL database system designed for handling large volumes of unstructured or semi-structured data. It uses a flexible, document-based model (JSON-like format) and is widely used for modern web and cloud applications. MongoDB can be installed on Windows, macOS, and various Linux distributions.
+
+#### Installing MongoDB
+
+The software can be downloaded from the MongoDB official website: https://www.mongodb.com/try/download/community
+
+You can select the appropriate version based on your operating system:
+
+Windows: Download the MSI installer and follow the setup wizard. You can choose between a complete installation or a custom setup.
+macOS: Install using the provided .tgz archive or via package managers like Homebrew (brew install mongodb-community).
+Linux: Detailed installation instructions are available for different distributions (such as Ubuntu, Debian, and Red Hat) on the download page.
+
+After installation, you can verify that MongoDB is running and connect using the MongoDB shell (mongosh) or a graphical interface like MongoDB Compass.
