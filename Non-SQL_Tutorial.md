@@ -139,7 +139,7 @@ Try this with other perametres, and build your database through coolections of a
 
 #### Stages
 You will notice that different operations appear at different stages. Much like programming languages, Mongo completes each operation iteratively.
-`Stage 1 $setWindowFields
+```Stage 1 $setWindowFields
 {
   sortBy: {
     SIMD2020_Housing_Domain_Rank: -1
@@ -149,17 +149,17 @@ You will notice that different operations appear at different stages. Much like 
       $percentRank: {}
     }
   }
-}`
+}```
 
-`Stage 2 $match
+```Stage 2 $match
 {
   percentile: {
     $gte: 0.95
   }
-}`
+}```
 
-`Stage 3 '$Out'
-"Top5Percent_Housing_Domain_Rank"`
+```Stage 3 '$Out'
+"Top5Percent_Housing_Domain_Rank"```
 
 
 'Out' for example is similar to export in other programmes, and writes a new collection with the results of the aggregation. It is usually in the final stage. 
@@ -200,9 +200,9 @@ Both Python and R have dedicated packages to work with a mongoDB database. Data 
 In python we use PyMongo.
 
 #### Python
-`pip install pymongo`
+```pip install pymongo```
 
-`from pymongo import MongoClient` 
+```from pymongo import MongoClient``` 
 
 #A clean way to load data into Python
 Connection_String = [Your Connection String]
@@ -240,7 +240,7 @@ new_conn$insert('{"Col1": "value", "Col2": value}')
 #### R 
 In R we use mongolite
 
-`install.packages("mongolite")
+```install.packages("mongolite")
 library(mongolite)
 
 connection_string <- "[Your Connection String]"
@@ -251,7 +251,7 @@ conn <- mongo(
   url = connection_string
 )
 
-data <- conn$find()` 
+data <- conn$find()``` 
 
 #Point to a NEW collection name
 conn <- mongo(
