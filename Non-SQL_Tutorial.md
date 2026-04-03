@@ -69,7 +69,7 @@ If you even need your string again, you can find it on the Project Overview Page
 mongodb+srv://alexwarrencrest_db_user:<db_password>@cluster0.bnjltc7.mongodb.net/?appName=Cluster0
 
 To create a database, load your cluster and click the + next to the CLuster name in the left hand panel. In mongo, databases are formed of multiple collections, each of which stores searchable data.
-Name the Database, and then name the collection 'SIMD_Ranks'.
+Name the Database 'SD_Mongo', and then name the collection 'SIMD_Ranks'.
 
 For this session, we will be using the Scottish Index of Multiple Deprivation Dataset, you can download it here:https://github.com/DCS-training/IntroToDatabases/blob/main/SIMD%20Ranks.csv 
 
@@ -133,13 +133,88 @@ Click the drop down menu for the operations in each stage to scroll through the 
 
 All new collections will be saved as they are created. When you end and return to the session, the data will remain and there is no need to save it again.
 However, there is no 'undo' button in the compass. So it is a good idea to create duplicate backups of the raw data and at different stages, incase of an error.  You can create a backup in a number of ways. The easiest is to create an aggregation that duplicates the data:
-Create a duplicate of this collection called SIMD_Ranks_Backup
+Create a duplicate of this collection called Backup_SIMD_Ranks
 or create a stage manually 
 $out
-"SIMD_Ranks_Backup"
+"Backup_SIMD_Ranks"
+
+This sort of practice provides you with a set of stored collections that can be reloaded if needed. They are also stored together in the UI and are therefor legible.
 
 
+Import and Export
 
+Data can be exported in the UI to both json and csv formats. An entire collection can be exported, or the results of a specific aggregation.
+Export the collection Top5Percent_Housing_Domain_Rank to CSV, and to JSON. 
+
+In Python and R
+
+Both Python and R have dedicated packages to work with a mongoDB database. 
+
+In python we use PyMongo.
+
+Python
+pip install pymongo
+
+from pymongo import MongoClient
+
+# A clean way to load data into Python
+Connection_String = [Your Connection String]
+client = MongoClient(Connection_String)
+db = client["SD_Mongo"]
+collection = db["SIMD_Ranks"]
+data = collection.find()
+
+# or a compressed version
+Connection_String = [Your Connection String]
+client = MongoClient(Connection_String)
+data = client["SD_Mongo"]["SIMD_Ranks"].find()
+
+# an operation to transform data
+
+# Upload new data to replace a collection
+conn$drop()        # deletes collection
+conn$insert(data)  # uploads fresh data
+
+#Warning. Be sure to upload data to either a new collection, or have a backup other wise it with either upend or overright what is already stored there.
+
+# Create a new collection
+new_conn <- mongo(
+  collection = "New_Collection_Name",
+  db = "SD_Mongo",
+  url = connection_string
+)
+# Replace a collection
+new_conn$drop()        # deletes collection
+new_conn$insert(data)  # uploads fresh data
+
+# Upload a single Document
+new_conn$insert('{"Col1": "value", "Col2": value}')
+
+
+In R we use mongolite
+
+install.packages("mongolite")
+library(mongolite)
+
+connection_string <- "[Your Connection String]"
+
+conn <- mongo(
+  collection = "SIMD_Ranks",
+  db = "SD_Mongo",
+  url = connection_string
+)
+
+data <- conn$find()
+
+# Point to a NEW collection name
+conn <- mongo(
+  collection = "new_collection_name",
+  db = "SD_Mongo",
+  url = connection_string
+)
+
+# Insert data → this creates the collection
+conn$insert(data)
 
 
 
